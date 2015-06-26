@@ -1,0 +1,56 @@
+Words for topic 1 (the religion of CHRISTIANITY) : 
+god : 0.14055
+christian : 0.097301
+peopl : 0.078451
+church : 0.069988
+jesu : 0.047797
+faith : 0.046659
+sin : 0.037554
+word : 0.033943
+bibl : 0.032434
+truth : 0.03115
+
+
+
+Words for topic 2 (impact of diet on HEALTH) : 
+effect : 0.084331
+diseas : 0.082007
+doctor : 0.079007
+medic : 0.079007
+patient : 0.071006
+peopl : 0.065836
+diet : 0.058005
+food : 0.058005
+treatment : 0.051005
+infect : 0.048004
+
+
+
+Words for topic 3 (INFORMATION SECURITY in modern democracies) :
+kei : 0.12371
+encrypt : 0.10536
+system : 0.072725
+govern : 0.061585
+secur : 0.061216
+chip : 0.060145
+clipper : 0.049084
+peopl : 0.044906
+comput : 0.035724
+escrow : 0.034728
+
+
+
+Words for topic 4 (SPACE EXPLORATION and discoveries by Nasa) :
+space : 0.16686
+launch : 0.099744
+orbit : 0.077371
+nasa : 0.067117
+mission : 0.066163
+shuttl : 0.052202
+system : 0.052031
+cost : 0.043813
+flight : 0.03822
+solar : 0.036355
+
+
+

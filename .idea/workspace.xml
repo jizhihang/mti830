@@ -34,12 +34,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="clientrecord.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="clientrecord.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/projet/clientrecord.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sbeaulieu_MTI380_devoir4.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dev04/sbeaulieu_MTI380_devoir4.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.42549923">
+              <caret line="105" column="13" selection-start-line="105" selection-start-column="13" selection-end-line="105" selection-end-column="13" />
+              <folding>
+                <element signature="e#71#104#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -325,6 +337,16 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dev04/sbeaulieu_MTI380_devoir4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42549923">
+          <caret line="105" column="13" selection-start-line="105" selection-start-column="13" selection-end-line="105" selection-end-column="13" />
+          <folding>
+            <element signature="e#71#104#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
