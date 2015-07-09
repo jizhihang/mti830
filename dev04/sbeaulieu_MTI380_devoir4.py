@@ -1,5 +1,6 @@
 #!/home/simon/Workspace/MTI830/exercicepython/env/local/lib/python2.7
-
+from matplotlib import powerLaw
+from matplotlib import plotPowerLaws
 from nltk.corpus import gutenberg
 from nltk.corpus import brown
 from nltk.corpus import stopwords
@@ -8,67 +9,6 @@ from nltk.probability import FreqDist
 from collections import defaultdict
 from time import sleep
 import numpy as np
-
-def powerLaw(y, x):
-    """
-    'When the frequency of an event varies as power of some attribute of that
-    event the frequency is said to follow a power law.' (wikipedia)
-
-    This is represented by the following equation, where c and alpha are
-    constants:
-    y = c . x ^ alpha
-
-    Args
-    --------
-    y: array with frequency of events >0
-    x: numpy array with attribute of events >0
-
-    Output
-    --------
-    (c, alpha)
-
-    c: the maximum frequency of any event
-    alpha: defined by (Newman, 2005 for details):
-        alpha = 1 + n * sum(ln( xi / xmin )) ^ -1
-    """
-    c = 0
-    alpha = .0
- 
-    if len(y) and len(y)==len(x):
-        c = max(y)
-        xmin = float(min(x))
-        alpha = 1 + len(x) * pow(sum(np.log(x/xmin)),-1)
- 
-    return (c, alpha)
-
-def plotPowerLaws(y, x, c=[], alpha=[], title="", xlabel="Word Rank", ylabel="Word Frequency"):
-    """
-    Plots the relationship between x and y and a fitted power law on LogLog
-    scale.
-
-    Args
-    --------
-    y: array with frequency of events >0
-    x: array with attribute of events >0
-    c: array of cs for various power laws
-    alpha: array of alphas for various power laws
-    """
-    import matplotlib.pyplot as plt
-
-    plt.figure()
-    plt.loglog()
-    plt.plot(x,
-             y,
-             'r+')
-    for _c, _alpha in zip(c,alpha):
-        plt.plot( (1, max(x)),
-                  (_c, _c * pow(max(x), _alpha)),
-                  label='~x^%.2f' % _alpha)
-        plt.legend()
-    plt.title(title)
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
-    plt.show()
 
 def gutenFreq():
     # Obtain the list of words 
