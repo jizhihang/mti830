@@ -34,15 +34,18 @@ nv.addGraph(function() {
   chart.y2Axis
       .tickFormat(d3.format(',.2f'));
 
-  d3.select('#chart svg')
-      .datum(testData())
+  var mainChart = d3.select('#chart svg');
+
+  mainChart.datum(testData())
       .transition().duration(500)
       .call(chart);
 
   nv.utils.windowResize(chart.update);
 
+  console.log(chart.height());
   return chart;
 });
+
 /**************************************
  * Simple test data generator
  */
