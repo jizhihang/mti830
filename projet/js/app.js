@@ -39,26 +39,51 @@ function stream_index(d, i) {
  *
  */
 nv.addGraph(function() {
-  var chart = nv.models.lineWithFocusChart();
+  var chart = nv.models.multiBarChart();
 
-  chart.xAxis
-      .tickFormat(d3.format(',f'));
+  var allData = [  {   key: "Federal",
+                    values: federalGovData 
+                },
+                {
+                    key: "Provincial",
+                    values: provincialGovData
+                },
+                {
+                    key: "Consolidated",
+                    values: consolidatedGovData
+                },
+                {
+                    key: "Local",
+                    values: localGovData
+                },
+                {
+                    key: "Pensions",
+                    values: pensionsGovData
+                }
+
+  ];
+
+  chart.x(function(d) { return d.Ref_Date; });
+  chart.y(function(d) { return d["Compensation of employees (x 1 000 000)"]; });
+
+  //chart.xAxis
+  //    .tickFormat(d3.format(',f'));
 
   chart.yAxis
       .tickFormat(d3.format(',.2f'));
 
-  chart.y2Axis
-      .tickFormat(d3.format(',.2f'));
+  //chart.y2Axis
+  //    .tickFormat(d3.format(',.2f'));
 
-  var mainChart = d3.select('#chart svg');
 
-  mainChart.datum(testData())
+  d3.select('#chart svg')
+      .datum(allData)
       .transition().duration(500)
       .call(chart);
 
+
   nv.utils.windowResize(chart.update);
 
-  console.log(chart.height());
   return chart;
 });
 
