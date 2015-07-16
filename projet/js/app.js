@@ -1,4 +1,11 @@
-/* Inspired by Lee Byron's test data generator. */ 
+/* Inspired by Lee Byron's test data generator. */
+/**
+ *
+ * @param n
+ * @param m
+ * @param o
+ * @returns {Array}
+ */
 function stream_layers(n, m, o) { 
   if (arguments.length < 3) o = 0; 
   function bump(a) { 
@@ -14,14 +21,23 @@ function stream_layers(n, m, o) {
       var a = [], i; 
       for (i = 0; i < m; i++) a[i] = o + o * Math.random(); 
       for (i = 0; i < 5; i++) bump(a); 
-      return a.map(stream_index); 
+      return a.map(stream_index);
     }); 
 }
 
+/**
+ *
+ * @param d
+ * @param i
+ * @returns {{x: *, y: number}}
+ */
 function stream_index(d, i) { 
   return {x: i, y: Math.max(0, d)}; 
-}  
+}
 
+/**
+ *
+ */
 nv.addGraph(function() {
   var chart = nv.models.lineWithFocusChart();
 
@@ -44,6 +60,25 @@ nv.addGraph(function() {
 
   console.log(chart.height());
   return chart;
+});
+
+nv.addGraph(function() {
+    var chart = nv.models.pieChart()
+            .x(function(d) { return d.label })
+            .y(function(d) { return d.value })
+            .showLabels(true)     //Display pie labels
+            .labelThreshold(.05)  //Configure the minimum slice size for labels to show up
+            .labelType("percent") //Configure what type of data to show in the label. Can be "key", "value" or "percent"
+            .donut(true)          //Turn on Donut mode. Makes pie chart look tasty!
+            .donutRatio(0.35)     //Configure how big you want the donut hole size to be.
+        ;
+
+    d3.select("#chart2 svg")
+        .datum(exampleData())
+        .transition().duration(350)
+        .call(chart);
+
+    return chart;
 });
 
 /**************************************

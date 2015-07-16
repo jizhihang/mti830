@@ -3,19 +3,55 @@
     <head>
         <meta charset="utf-8">
         <title>D3 Test</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/custom.css">
         <link href="css/nv.d3.min.css" rel="stylesheet">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="js/pagelayout.js"></script>
         <script type="text/javascript" src="js/d3.js"></script>
         <script type="text/javascript" src="js/nv.d3.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
-
     </head>
     <body>
-        <script type="text/javascript">
-            
-        </script>
-        <h1>My test chart</h1>
-        <div id="chart">
-            <svg></svg>
-        </div>    
+        <nav class="navbar navbar-inverse navbar-static-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <img alt="Brand" src="images/ETS-rouge-ecran.jpg">
+                    </a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a>
+                            <h1 style="color:#ffffff">Canada government expenses and revenue distribution</h1>
+                        </a>
+                    </li>
+                </ul>
+            </div><!-- /.container-fluid -->
+        </nav>
+        <!-- Section 1 -->
+        <section id="intro" data-speed="6" data-type="background">
+            <div class="container">
+                <h1>Political parties</h1>
+                <div id="govchart">
+                    <svg></svg>
+                </div>
+            </div>
+        </section>
+        <!-- Section 2 -->
+        <section id="home" data-speed="4" data-type="background">
+            <div class="container">
+                <h1>My test chart</h1>
+                <div id="chart">
+                    <svg></svg>
+                </div>
+            </div>
+        </section>
+        <!-- Section 3 -->
+        <section id="about" data-speed="2" data-type="background">
+            <div class="container">
+                This is the final section!
+            </div>
+        </section>
     </body>
 </html> 
