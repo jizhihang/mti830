@@ -93,11 +93,11 @@ nv.addGraph(function() {
     var chart = nv.models.pieChart()
             .x(function(d) { return d.label })
             .y(function(d) { return d.value })
-            .showLabels(true)     //Display pie labels
+            .showLabels(true)     //Display pie label
             .labelThreshold(.05)  //Configure the minimum slice size for labels to show up
-            .labelType("percent") //Configure what type of data to show in the label. Can be "key", "value" or "percent"
+            .labelType("value") //Configure what type of data to show in the label. Can be "key", "value" or "percent"
             .donut(true)          //Turn on Donut mode. Makes pie chart look tasty!
-            .donutRatio(0.35)     //Configure how big you want the donut hole size to be.
+            .donutRatio(0.4)     //Configure how big you want the donut hole size to be.
         ;
 
     d3.select("#govchart svg")
@@ -179,12 +179,33 @@ function calculateDaysInPower(element, govtsummary){
 
     // Verify if party exists in data array
     // if yes, append the # of days
-    // if not, create a new object
+    var foundMatch = false;
+
     for(var i = 0;i < govtsummary.length; i++) {
-        if (govtsummary[i].label === element.party) {
+        console.log("The actual ");
+        if (govtsummary[i].label === partyName) {
             govtsummary[i].value += numberOfDays;
+            foundMatch = true;
             break;
         }
+    }
+
+    // If no existing party has been found, add the item
+    if(!foundMatch){
         govtsummary.push({"label": partyName, "value": numberOfDays});
     }
 };
+
+/**
+ * For a given party, return the percentage of the time they where in majority when in power
+ */
+function calculateMajorityPercentage(element, govtsummary){
+
+}
+
+/**
+ * For a given party, return the percentage of the time they where in majority when in power
+ */
+function calculateMinorityPercentage(element, govtsummary){
+
+}
