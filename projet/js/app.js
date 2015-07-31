@@ -1,3 +1,4 @@
+
 /* Inspired by Lee Byron's test data generator. */
 /**
  *
@@ -87,6 +88,7 @@ nv.addGraph(function() {
   return chart;
 });
 
+//Donut chart example
 nv.addGraph(function() {
     var chart = nv.models.pieChart()
             .x(function(d) { return d.label })
@@ -98,23 +100,91 @@ nv.addGraph(function() {
             .donutRatio(0.35)     //Configure how big you want the donut hole size to be.
         ;
 
-    d3.select("#chart2 svg")
-        .datum(exampleData())
+    d3.select("#govchart svg")
+        //.datum(govtSummaryList)
+        .datum(govtInPower())
         .transition().duration(350)
         .call(chart);
 
     return chart;
 });
 
-/**************************************
- * Simple test data generator
- */
+function govtInPower(){
+    var govtList = [
+        {	"begin": "1988/11/21",
+            "end": "1993/10/25",
+            "party": "Progressive conservative",
+            "type": "majority"
+        },
+        {	"begin": "1993/10/25",
+            "end": "1997/06/02",
+            "party": "Liberal",
+            "type": "majority"
+        },
+        {	"begin": "1997/06/02",
+            "end": "2000/11/27",
+            "party": "Liberal",
+            "type": "majority"
+        },
+        {	"begin": "2000/11/27",
+            "end": "2004/06/28",
+            "party": "Liberal",
+            "type": "majority"
+        },
+        {	"begin": "2004/06/28",
+            "end": "2006/01/23",
+            "party": "Liberal",
+            "type": "minority"
+        },
+        {	"begin": "2006/01/23",
+            "end": "2008/10/14",
+            "party": "Conservative",
+            "type": "minority"
+        },
+        {	"begin": "2008/10/14",
+            "end": "2011/05/02",
+            "party": "Conservative",
+            "type": "minority"
+        },
+        {	"begin": "2011/05/02",
+            "end": "N/A",
+            "party": "Conservative",
+            "type": "majority"
+        }
+    ];
 
-function testData() {
-  return stream_layers(3,128,.1).map(function(data, i) {
-    return { 
-      key: 'Stream' + i,
-      values: data
-    };
-  });
+    // Global summary list for the days in power for each government
+    govtSummaryList = [{"label":"Liberal","value":56}, {"label":"Conservative","value":78}];
+
+    govtList.forEach(function(element){
+        calculateDaysInPower(element,govtSummaryList);
+    });
+
+    return govtSummaryList;
 }
+
+/**
+ * Calculate the number of days in power
+ *
+ **/
+function calculateDaysInPower(element, govtsummary){
+    var numberOfDays = 0;
+    var partyName = element.party;
+
+    if(element.end != "N/A"){
+        numberOfDays = Math.floor( (Date.parse(element.end)- Date.parse(element.begin)) / (1000*60*60*24));
+    } else {
+        numberOfDays = Math.floor( (Date.now() - Date.parse(element.begin)) / (1000*60*60*24));
+    }
+
+    // Verify if party exists in data array
+    // if yes, append the # of days
+    // if not, create a new object
+    for(var i = 0;i < govtsummary.length; i++) {
+        if (govtsummary[i].label === element.party) {
+            govtsummary[i].value += numberOfDays;
+            break;
+        }
+        govtsummary.push({"label": partyName, "value": numberOfDays});
+    }
+};
