@@ -46,6 +46,18 @@ nv.addGraph(function() {
     $('#varname').html(sel.val());
   });
 
+  $('#indexUSDCAD').click(function() {
+    if ($(this).is(":checked")) {
+      // Index
+      chart.y(function(d) { return Math.round( d[sel.val()] * ratioUSDCAD[d["Ref_Date"]] ); });
+    } else {
+      // Non indexed
+      chart.y(function(d) { return d[sel.val()]; });
+    }
+
+    chart.update();
+  });
+
 
 
   // Enables the Grouped vs Stacked controls.
@@ -58,7 +70,7 @@ nv.addGraph(function() {
   chart.y(function(d, i) { return d["Net financial worth (x 1 000 000)"]; });
 
   // Format the y-Axis data (ten thousand will be "10,000" instead of 10000.0)
-  chart.yAxis.tickFormat(d3.format(','));
+  chart.yAxis.tickFormat(d3.format(',.2'));
 
 
   svg = d3.select('#chart svg');
