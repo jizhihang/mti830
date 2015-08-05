@@ -1,0 +1,43 @@
+.navbar-nav > li > a {
+    padding-top:4px !important;
+    padding-bottom:0 !important;
+    height: 28px;
+}
+.navbar {
+    margin-bottom: 0px !important;
+    min-height:100px !important;
+}
+
+#intro {
+    background: url(../images/canadabc_blurred.jpg) 50% 0 fixed;
+    height: auto;
+    width: auto;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    padding: 250px 0;
+}
+
+#intro > .container {
+    width:100%;
+    background-color: #235796;
+}
+#home {
+    background: url(../images/canadaflag.JPG) 50% 0 fixed;
+    height: auto;
+    width: auto;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    padding: 300px 0;
+}
+
+#about {
+    background: url(../images/vancouver_blurred.jpg) 50% 0 fixed;
+    height: auto;
+    margin: 0 auto;
+    width: auto;
+    position: relative;
+    padding: 250px 0;
+    color: #fff;
+}
