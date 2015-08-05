@@ -2,17 +2,33 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>D3 Test</title>
+        <title>MTI830</title>
         <link href="css/nv.d3.min.css" rel="stylesheet">
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
-        <script type="text/javascript" src="js/d3.js"></script>
-        <script type="text/javascript" src="js/nv.d3.js"></script>
-        <script type="text/javascript" src="js/app.js"></script>
-        <script type="text/javascript" src="load_data.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+        <script src="js/d3.js"></script>
+        <script src="js/nv.d3.js"></script>
+        <script src="js/load_data.js"></script>
+        <script src="data/governments_dates_list.js"></script>
+        <script src="js/app.js"></script>
+        
 
     </head>
     <body>
-        <h1>My test chart</h1>
+        <h1>Canada finance data per quarter 1991-2014</h1>
+
+
+        <select id="chartVar" class="form-control">
+
+        </select>
+        <div class="checkbox">
+            <label class="form-control">
+                <input type="checkbox" id="indexUSDCAD"> Indexed to CAD/USD
+            </label>
+        </div>
+        <br>
+        <center id="varname">Net financial worth (x 1 000 000)</center>
         <div id="chart">
             <svg></svg>
         </div>    

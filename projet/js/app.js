@@ -1,29 +1,10 @@
-/* Inspired by Lee Byron's test data generator. */ 
-function stream_layers(n, m, o) { 
-  if (arguments.length < 3) o = 0; 
-  function bump(a) { 
-    var x = 1 / (.1 + Math.random()), 
-        y = 2 * Math.random() - .5, 
-        z = 10 / (.1 + Math.random()); 
-    for (var i = 0; i < m; i++) { 
-      var w = (i / m - y) * z; 
-      a[i] += x * Math.exp(-w * w); 
-    } 
-  } 
-  return d3.range(n).map(function() { 
-      var a = [], i; 
-      for (i = 0; i < m; i++) a[i] = o + o * Math.random(); 
-      for (i = 0; i < 5; i++) bump(a); 
-      return a.map(stream_index); 
-    }); 
-}
-
-function stream_index(d, i) { 
-  return {x: i, y: Math.max(0, d)}; 
-}  
-
 nv.addGraph(function() {
-  var chart = nv.models.multiBarChart();
+  var width = nv.utils.windowSize().width,
+      height = nv.utils.windowSize().height;
+
+  $('#chart').height(height);
+
+  chart = nv.models.multiBarChart();
 
   var allData = [  {   key: "Federal",
                     values: federalGovData 
@@ -47,39 +28,87 @@ nv.addGraph(function() {
 
   ];
 
-  chart.x(function(d) { return d.Ref_Date; });
-  chart.y(function(d) { return d["Compensation of employees (x 1 000 000)"]; });
+  var exclude = ['key', 'series', 'Ref_Date'];
+  var allChartVars = [];
 
-  //chart.xAxis
-  //    .tickFormat(d3.format(',f'));
+  var sel = $('#chartVar');
+  for(key in federalGovData[0]) {
+    if($.inArray(key, exclude) == -1)
+      sel.append($("<option>").attr('value',key).text(key));
+  }
 
-  chart.yAxis
-      .tickFormat(d3.format(',.2f'));
+  sel.change(function() {
+    chart.y(function(d) { return d[sel.val()]; });
+    chart.update();
+    $('#varname').html(sel.val());
+  });
 
-  //chart.y2Axis
-  //    .tickFormat(d3.format(',.2f'));
 
 
-  d3.select('#chart svg')
-      .datum(allData)
+  // Enables the Grouped vs Stacked controls.
+  chart.showControls(true);
+  // Rotate labels
+  chart.rotateLabels(45);
+  // Custom function to have the X axis as the reference date (quarters for each year)
+  chart.x(function(d, i) { return d.Ref_Date; });
+  // Custom function to have the Y axis as whatever value we choose
+  chart.y(function(d, i) { return d["Net financial worth (x 1 000 000)"]; });
+
+  // Format the y-Axis data (ten thousand will be "10,000" instead of 10000.0)
+  chart.yAxis.tickFormat(d3.format(','));
+
+
+  svg = d3.select('#chart svg');
+
+  //prog-con MAJ
+  topkek = svg.append("rect")
+            .attr("y", 0)
+            .attr("x", 60)
+            .attr("width", 150)
+            .attr("height", 700)
+            .attr("fill", "rgba(0,255,255, 0.2")
+            .attr("class", "legendBar");
+
+  svg.append("rect")
+            .attr("y", 0)
+            .attr("x", 210)
+            .attr("width", 525)
+            .attr("height", 700)
+            .attr("fill", "rgba(255,0,0, 0.2")
+            .attr("class", "legendBar");
+
+  svg.append("rect")
+            .attr("y", 0)
+            .attr("x", 735)
+            .attr("width", 75)
+            .attr("height", 700)
+            .attr("fill", "rgba(255,0,0, 0.1")
+            .attr("class", "legendBar");
+
+  svg.append("rect")
+            .attr("y", 0)
+            .attr("x", 810)
+            .attr("width", 275)
+            .attr("height", 700)
+            .attr("fill", "rgba(0,0,255, 0.1")
+            .attr("class", "legendBar");
+
+  svg.append("rect")
+            .attr("y", 0)
+            .attr("x", 1085)
+            .attr("width", 200)
+            .attr("height", 700)
+            .attr("fill", "rgba(0,0,255, 0.2")
+            .attr("class", "legendBar");
+
+  svg.datum(allData)
       .transition().duration(500)
       .call(chart);
 
 
   nv.utils.windowResize(chart.update);
 
+  sel.val("Net financial worth (x 1 000 000)");
+
   return chart;
 });
-
-/**************************************
- * Simple test data generator
- */
-
-function testData() {
-  return stream_layers(3,128,.1).map(function(data, i) {
-    return { 
-      key: 'Stream' + i,
-      values: data
-    };
-  });
-}
