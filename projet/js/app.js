@@ -69,7 +69,7 @@ nv.addGraph(function() {
             .attr("x", 60)
             .attr("width", 150)
             .attr("height", 700)
-            .attr("fill", "rgba(0,255,255, 0.2")
+            .attr("fill", "rgba(0,255,255, 0.4")
             .attr("class", "legendBar");
 
   svg.append("rect")
@@ -77,7 +77,7 @@ nv.addGraph(function() {
             .attr("x", 210)
             .attr("width", 525)
             .attr("height", 700)
-            .attr("fill", "rgba(255,0,0, 0.2")
+            .attr("fill", "rgba(255,0,0, 0.4")
             .attr("class", "legendBar");
 
   svg.append("rect")
@@ -85,7 +85,7 @@ nv.addGraph(function() {
             .attr("x", 735)
             .attr("width", 75)
             .attr("height", 700)
-            .attr("fill", "rgba(255,0,0, 0.1")
+            .attr("fill", "rgba(255,0,0, 0.2")
             .attr("class", "legendBar");
 
   svg.append("rect")
@@ -93,7 +93,7 @@ nv.addGraph(function() {
             .attr("x", 810)
             .attr("width", 275)
             .attr("height", 700)
-            .attr("fill", "rgba(0,0,255, 0.1")
+            .attr("fill", "rgba(0,0,255, 0.2")
             .attr("class", "legendBar");
 
   svg.append("rect")
@@ -101,7 +101,7 @@ nv.addGraph(function() {
             .attr("x", 1085)
             .attr("width", 200)
             .attr("height", 700)
-            .attr("fill", "rgba(0,0,255, 0.2")
+            .attr("fill", "rgba(0,0,255, 0.4")
             .attr("class", "legendBar");
 
   svg.datum(allData)
